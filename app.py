@@ -49,18 +49,18 @@ html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
 
 /* Sidebar */
 section[data-testid="stSidebar"] {
-    background: #0f1923;
-    border-right: 1px solid #1e3a4a;
+    background: #0b4f25;
+    border-right: 1px solid #18643b;
 }
-section[data-testid="stSidebar"] * { color: #cdd9e5 !important; }
+section[data-testid="stSidebar"] * { color: #d9f1e0 !important; }
 section[data-testid="stSidebar"] .stRadio label { font-size: 15px; padding: 6px 0; }
 
 /* Main bg */
-.stApp { background: #f0f4f8; }
+.stApp { background: #f0f8f3; }
 
 /* Page header */
 .page-header {
-    background: linear-gradient(135deg, #0f1923 0%, #1a3a52 60%, #0d5c8a 100%);
+    background: linear-gradient(135deg, #0b4f25 0%, #277a44 60%, #48b968 100%);
     border-radius: 16px;
     padding: 32px 40px;
     margin-bottom: 28px;
@@ -73,30 +73,30 @@ section[data-testid="stSidebar"] .stRadio label { font-size: 15px; padding: 6px 
     position: absolute; top: -40px; right: -40px;
     width: 200px; height: 200px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.04);
+    background: rgba(255,255,255,0.08);
 }
 .page-header h1 {
     font-family: 'Syne', sans-serif;
     font-size: 28px; font-weight: 800;
     margin: 0 0 6px 0; letter-spacing: -0.5px;
 }
-.page-header p { margin: 0; opacity: 0.7; font-size: 14px; }
+.page-header p { margin: 0; opacity: 0.8; font-size: 14px; }
 
 /* Form card */
 .form-card {
     background: white;
     border-radius: 14px;
     padding: 28px 32px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     margin-bottom: 20px;
 }
 .section-title {
     font-family: 'Syne', sans-serif;
     font-size: 13px; font-weight: 700;
     text-transform: uppercase; letter-spacing: 1.5px;
-    color: #0d5c8a; margin-bottom: 18px;
+    color: #1f6d43; margin-bottom: 18px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #e8f4fd;
+    border-bottom: 2px solid #e8f9ef;
 }
 
 /* KPI cards */
@@ -105,18 +105,18 @@ section[data-testid="stSidebar"] .stRadio label { font-size: 15px; padding: 6px 
     border-radius: 14px;
     padding: 22px 24px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    border-left: 4px solid #0d5c8a;
+    border-left: 4px solid #23a455;
 }
 .kpi-value {
     font-family: 'Syne', sans-serif;
     font-size: 36px; font-weight: 800;
-    color: #0f1923; line-height: 1;
+    color: #0b4f25; line-height: 1;
 }
-.kpi-label { font-size: 13px; color: #6b7c93; margin-top: 6px; }
+.kpi-label { font-size: 13px; color: #5a7a6b; margin-top: 6px; }
 
 /* Success banner */
 .success-banner {
-    background: linear-gradient(135deg, #0a7c42, #14a85a);
+    background: linear-gradient(135deg, #0e8f48, #2fc26d);
     color: white; border-radius: 12px;
     padding: 18px 24px; margin: 16px 0;
     font-weight: 500;
@@ -133,29 +133,29 @@ section[data-testid="stSidebar"] .stRadio label { font-size: 15px; padding: 6px 
 .chart-title {
     font-family: 'Syne', sans-serif;
     font-size: 14px; font-weight: 700;
-    color: #0f1923; margin-bottom: 16px;
+    color: #0b4f25; margin-bottom: 16px;
     text-transform: uppercase; letter-spacing: 0.5px;
 }
 
 /* Streamlit overrides */
 .stTextInput input, .stSelectbox select, .stTextArea textarea {
     border-radius: 8px !important;
-    border-color: #dde3ea !important;
+    border-color: #d1e8d7 !important;
     font-family: 'DM Sans', sans-serif !important;
 }
 .stButton > button {
-    background: linear-gradient(135deg, #0d5c8a, #0a7cc2) !important;
+    background: linear-gradient(135deg, #0e8f48, #16b55b) !important;
     color: white !important; border: none !important;
     border-radius: 10px !important; padding: 12px 32px !important;
     font-family: 'Syne', sans-serif !important;
     font-weight: 700 !important; font-size: 15px !important;
     letter-spacing: 0.5px !important;
-    box-shadow: 0 4px 14px rgba(13,92,138,0.35) !important;
+    box-shadow: 0 4px 14px rgba(14,143,72,0.35) !important;
     transition: all 0.2s !important;
 }
 .stButton > button:hover {
     transform: translateY(-1px) !important;
-    box-shadow: 0 6px 20px rgba(13,92,138,0.45) !important;
+    box-shadow: 0 6px 20px rgba(14,143,72,0.45) !important;
 }
 div[data-testid="stDataFrame"] { border-radius: 10px; overflow: hidden; }
 </style>
@@ -425,7 +425,7 @@ elif page == "📊  Dashboard":
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    COLORS = ["#0d5c8a", "#1a8fc1", "#e67e22", "#27ae60", "#8e44ad", "#c0392b", "#16a085", "#2c3e50"]
+    COLORS = ["#0f6f42", "#2fa05d", "#5bc47f", "#85d99f", "#bae7ca", "#0d5d36", "#269a50", "#1f6a3f"]
 
     # ── Row 1: Responsável + Tipo de Atividade ────────────────────────────
     r1c1, r1c2 = st.columns(2)
@@ -434,7 +434,7 @@ elif page == "📊  Dashboard":
         resp_count = dff["Responsável"].value_counts().reset_index()
         resp_count.columns = ["Responsável", "Qtd"]
         fig = px.bar(resp_count, x="Qtd", y="Responsável", orientation="h",
-                     color="Qtd", color_continuous_scale=["#b3d9f2", "#0d5c8a"],
+                     color="Qtd", color_continuous_scale=["#cde9d8", "#0b4f25"],
                      template="plotly_white")
         fig.update_layout(showlegend=False, coloraxis_showscale=False,
                           margin=dict(l=0,r=0,t=0,b=0), height=320,
@@ -480,7 +480,7 @@ elif page == "📊  Dashboard":
             dff2["Mês"] = dff2["Data"].dt.to_period("M").astype(str)
             time_count = dff2.groupby("Mês").size().reset_index(name="Qtd")
             fig4 = px.area(time_count, x="Mês", y="Qtd",
-                           color_discrete_sequence=["#0d5c8a"],
+                           color_discrete_sequence=["#0b4f25"],
                            template="plotly_white")
             fig4.update_traces(fill="tozeroy", line_color="#0d5c8a",
                                fillcolor="rgba(13,92,138,0.15)")
