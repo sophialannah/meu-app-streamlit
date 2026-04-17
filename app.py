@@ -193,7 +193,7 @@ with st.sidebar:
     st.markdown("""
     <div style='padding:20px 0 10px;'>
         <div style='font-family:Syne,sans-serif;font-size:22px;font-weight:800;
-                    color:white;letter-spacing:-0.5px;'>📋 SIGAP</div>
+                    color:white;letter-spacing:-0.5px;'>📋 GEIMP</div>
         <div style='font-size:12px;opacity:0.5;margin-top:4px;'>Sistema de Gestão de Atividades</div>
     </div>
     <hr style='border-color:#1e3a4a;margin:12px 0 20px;'/>
