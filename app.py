@@ -20,11 +20,11 @@ st.set_page_config(
 DATA_FILE = "dados_relatorio.csv"
 
 RESPONSAVEIS = [
-    "Em definição", "Abel Silva", "Andrea Almeida", "Christopher Rezende",
-    "Daisa haissy", "Elvis Oliveira", "Fernanda Marques", "Gerson Rodrigues",
+    "Em definição", "Abel Silva", "Andrea Almeida",
+    "Daisa Haissy", "Fernanda Marques", "Gerson Rodrigues",
     "Lucas Mota", "Matheus Alves", "Nilton Coelho", "Rafael Almeida",
     "Rafael Aires", "Rafael Lacerda", "Rosa Augusta", "Rosane Castro",
-    "Rosangela Pereira", "Saulo de Castro", "Sophia Lannah",
+    "Rosangela Pereira", "Sophia Lannah",
 ]
 
 PALAVRAS_CHAVE = [
