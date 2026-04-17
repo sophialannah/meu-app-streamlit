@@ -1,3 +1,5 @@
+# Bibliotecas
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -9,7 +11,7 @@ from datetime import datetime, date, time
 import warnings
 warnings.filterwarnings("ignore")
 
-# ── Config ──────────────────────────────────────────────────────────────────
+# Aparência da página web
 st.set_page_config(
     page_title="Relatório de Atividades GEIMP",
     page_icon="📋",
@@ -17,7 +19,11 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+# Onde os dados serão salvos
+
 DATA_FILE = "dados_relatorio.csv"
+
+# Lista de pessoas que podem ser responsáveis pelas atividades:
 
 RESPONSAVEIS = [
     "Em definição", "Abel Silva", "Andrea Almeida",
@@ -27,6 +33,8 @@ RESPONSAVEIS = [
     "Rosangela Pereira", "Sophia Lannah",
 ]
 
+# Lista de palavras-chave para classificar as atividades:
+
 PALAVRAS_CHAVE = [
     "Anteprojeto de Lei", "Base Folha", "Concurso Público", "Ofício Circular",
     "Orientação PGE", "Painel Remuneratório", "Evolução Funcional",
@@ -35,12 +43,14 @@ PALAVRAS_CHAVE = [
     "Relatório de Frequência", "Processo Interno", "Estudo da Carreira",
 ]
 
+# Classificação da natureza da atividade
 TIPOS_ATIVIDADE = [
     "Atividade Complementar", "Despacho", "Estudo",
     "Impacto", "Levantamento", "Aperfeiçoamento",
 ]
 
-# ── CSS ─────────────────────────────────────────────────────────────────────
+# CSS customizado para melhorar a aparência do app
+
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
@@ -162,7 +172,8 @@ div[data-testid="stDataFrame"] { border-radius: 10px; overflow: hidden; }
 """, unsafe_allow_html=True)
 
 
-# ── Data helpers ─────────────────────────────────────────────────────────────
+# Funções para manipulação dos dados
+
 COLUMNS = [
     "Nº Processo", "Responsável", "Palavra-chave", "Assunto da Atividade",
     "Detalhamento da Atividade", "Tipo de Atividade", "Interessado",
@@ -188,7 +199,8 @@ def save_record(record: dict):
     df.to_csv(DATA_FILE, index=False)
 
 
-# ── Sidebar navigation ────────────────────────────────────────────────────────
+# Layout do app
+
 with st.sidebar:
     st.markdown("""
     <div style='padding:20px 0 10px;'>
@@ -215,10 +227,8 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
+# Página principal de cadastro
 
-# ══════════════════════════════════════════════════════════════════════════════
-#  PAGE 1 — FORM
-# ══════════════════════════════════════════════════════════════════════════════
 if page == "📝  Registrar Atividade":
     st.markdown("""
     <div class="page-header">
@@ -229,7 +239,8 @@ if page == "📝  Registrar Atividade":
 
     with st.form("relatorio_form", clear_on_submit=True):
 
-        # ── Bloco 1: Identificação ────────────────────────────────────────
+        # Cria um formulário organizado visualmente com campos agrupados em seções
+
         st.markdown('<div class="form-card">', unsafe_allow_html=True)
         st.markdown('<div class="section-title">🔖 Identificação do Processo</div>', unsafe_allow_html=True)
 
@@ -247,7 +258,8 @@ if page == "📝  Registrar Atividade":
 
         st.markdown('</div>', unsafe_allow_html=True)
 
-        # ── Bloco 2: Atividade ────────────────────────────────────────────
+        # Cria a segunda seção do formulário para detalhar a atividade em si
+
         st.markdown('<div class="form-card">', unsafe_allow_html=True)
         st.markdown('<div class="section-title">📝 Detalhes da Atividade</div>', unsafe_allow_html=True)
 
@@ -268,7 +280,7 @@ if page == "📝  Registrar Atividade":
 
         st.markdown('</div>', unsafe_allow_html=True)
 
-        # ── Bloco 3: Datas ────────────────────────────────────────────────
+        # Terceira seção do formulário para controle de datas, prazos e horários
         st.markdown('<div class="form-card">', unsafe_allow_html=True)
         st.markdown('<div class="section-title">📅 Datas e Prazos</div>', unsafe_allow_html=True)
 
@@ -301,7 +313,8 @@ if page == "📝  Registrar Atividade":
 
         st.markdown('</div>', unsafe_allow_html=True)
 
-        # ── Bloco 4: Encaminhamento ───────────────────────────────────────
+        # Cria a última seção do formulário e o botão de envio
+
         st.markdown('<div class="form-card">', unsafe_allow_html=True)
         st.markdown('<div class="section-title">📤 Encaminhamento</div>', unsafe_allow_html=True)
         encaminhamento = st.text_area("17. Encaminhamento *",
@@ -311,7 +324,8 @@ if page == "📝  Registrar Atividade":
 
         submitted = st.form_submit_button("✅  Enviar Relatório", use_container_width=True)
 
-    # ── Process submission ────────────────────────────────────────────────
+    # Processa o envio do formulário
+
     if submitted:
         errors = []
         if not n_processo.strip():
@@ -364,10 +378,8 @@ if page == "📝  Registrar Atividade":
             """, unsafe_allow_html=True)
             st.balloons()
 
+#  Implementa a segunda página do sistema (Dashboard)
 
-# ══════════════════════════════════════════════════════════════════════════════
-#  PAGE 2 — DASHBOARD
-# ══════════════════════════════════════════════════════════════════════════════
 elif page == "📊  Dashboard":
     df = load_data()
 
@@ -382,7 +394,8 @@ elif page == "📊  Dashboard":
         st.info("ℹ️ Nenhum registro encontrado. Use o formulário para adicionar atividades.")
         st.stop()
 
-    # ── Filters ──────────────────────────────────────────────────────────
+    # Cria um painel de filtros expansível
+
     with st.expander("🔍 Filtros", expanded=False):
         fc1, fc2, fc3 = st.columns(3)
         with fc1:
@@ -397,7 +410,8 @@ elif page == "📊  Dashboard":
     if f_tipo: dff = dff[dff["Tipo de Atividade"].isin(f_tipo)]
     if f_pkw:  dff = dff[dff["Palavra-chave"].isin(f_pkw)]
 
-    # ── KPIs ─────────────────────────────────────────────────────────────
+    # Cria os cards de indicadores (KPIs) no topo do Dashboard
+
     k1, k2, k3, k4 = st.columns(4)
     with k1:
         st.markdown(f"""<div class="kpi-card">
@@ -427,7 +441,8 @@ elif page == "📊  Dashboard":
 
     COLORS = ["#0f6f42", "#2fa05d", "#5bc47f", "#85d99f", "#bae7ca", "#0d5d36", "#269a50", "#1f6a3f"]
 
-    # ── Row 1: Responsável + Tipo de Atividade ────────────────────────────
+    # Cria dois gráficos lado a lado na primeira linha do Dashboard
+
     r1c1, r1c2 = st.columns(2)
     with r1c1:
         st.markdown('<div class="chart-card"><div class="chart-title">Atividades por Responsável</div>', unsafe_allow_html=True)
@@ -456,7 +471,8 @@ elif page == "📊  Dashboard":
         st.plotly_chart(fig2, use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
-    # ── Row 2: Palavra-chave + Evolução temporal ──────────────────────────
+    # ria a segunda linha do Dashboard com dois gráficos: palavras-chave mais usadas e evolução temporal dos registros
+
     r2c1, r2c2 = st.columns([1, 1])
     with r2c1:
         st.markdown('<div class="chart-card"><div class="chart-title">Top Palavras-chave</div>', unsafe_allow_html=True)
@@ -490,7 +506,8 @@ elif page == "📊  Dashboard":
             st.info("Dados temporais insuficientes.")
         st.markdown('</div>', unsafe_allow_html=True)
 
-    # ── Row 3: Heatmap Responsável × Tipo ────────────────────────────────
+    # Cria um mapa de calor (heatmap) que mostra a relação entre Responsáveis e Tipos de Atividade
+
     st.markdown('<div class="chart-card"><div class="chart-title">Heatmap — Responsável × Tipo de Atividade</div>', unsafe_allow_html=True)
     pivot = dff.pivot_table(index="Responsável", columns="Tipo de Atividade",
                             aggfunc="size", fill_value=0)
@@ -501,7 +518,8 @@ elif page == "📊  Dashboard":
     st.plotly_chart(fig5, use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # ── Row 4: Processos por status de conclusão ──────────────────────────
+    # Cria um gráfico de barras que mostra a proporção entre processos concluídos e pendentes
+
     st.markdown('<div class="chart-card"><div class="chart-title">Processos: Concluídos vs Pendentes</div>', unsafe_allow_html=True)
     dff["Concluído"] = dff["Data Conclusão do Processo"].apply(
         lambda x: "✅ Concluído" if (isinstance(x, str) and x.strip()) else "⏳ Pendente"
@@ -517,10 +535,8 @@ elif page == "📊  Dashboard":
     st.plotly_chart(fig6, use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
+# Implementa a terceira e última página do sistema - a página de "Dados Completos"
 
-# ══════════════════════════════════════════════════════════════════════════════
-#  PAGE 3 — DATA TABLE
-# ══════════════════════════════════════════════════════════════════════════════
 elif page == "📁  Dados Completos":
     df = load_data()
 
@@ -535,7 +551,8 @@ elif page == "📁  Dados Completos":
         st.info("ℹ️ Nenhum registro encontrado.")
         st.stop()
 
-    # Search
+    # Adiciona funcionalidade de busca e exibição dos dados na página "Dados Completos"
+
     search = st.text_input("🔍 Buscar em todos os campos", placeholder="Digite para filtrar...")
     if search:
         mask = df.apply(lambda col: col.astype(str).str.contains(search, case=False, na=False))
@@ -544,7 +561,8 @@ elif page == "📁  Dados Completos":
     st.markdown(f"**{len(df)} registro(s) encontrado(s)**")
     st.dataframe(df, use_container_width=True, height=500)
 
-    # Export
+    # Cria um botão para baixar/exportar os dados em formato CSV
+    
     csv_bytes = df.to_csv(index=False).encode("utf-8-sig")
     st.download_button(
         label="⬇️  Exportar CSV",
