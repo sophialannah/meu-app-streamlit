@@ -222,7 +222,7 @@ with st.sidebar:
 if page == "📝  Registrar Atividade":
     st.markdown("""
     <div class="page-header">
-        <h1>📋 Relatório de Atividades</h1>
+        <h1>📋 Relatório de Atividades GEIMP</h1>
         <p>Preencha todos os campos obrigatórios para registrar sua atividade</p>
     </div>
     """, unsafe_allow_html=True)
