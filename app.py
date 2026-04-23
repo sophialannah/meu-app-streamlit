@@ -471,7 +471,7 @@ elif page == "📊  Dashboard":
         st.plotly_chart(fig2, use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
-    # ria a segunda linha do Dashboard com dois gráficos: palavras-chave mais usadas e evolução temporal dos registros
+    # Cria a segunda linha do Dashboard com dois gráficos: palavras-chave mais usadas e evolução temporal dos registros
 
     r2c1, r2c2 = st.columns([1, 1])
     with r2c1:
